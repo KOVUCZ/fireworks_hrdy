@@ -14,6 +14,9 @@ namespace fireworks_hrdy
         public Point Location { get; set; }
         public Vector SpeedVector { get; set; }
         public int Level { get; set; }
+        private int countdown = 60;
+        
+        public event Action<List<rocket>>? Exploded;
 
         public rocket(Point location, Vector speedVector, int level)
         {
@@ -29,6 +32,11 @@ namespace fireworks_hrdy
         {
             Location.Offset(SpeedVector.X, SpeedVector.Y);
             SpeedVector = Vector.Add(SpeedVector, gravity);
+            countdown--;
+            if (countdown < 0) 
+            {
+                Exploded?.Invoke(Explode());
+            }
         }
 
         public List<rocket> Explode()
@@ -36,7 +44,14 @@ namespace fireworks_hrdy
             List<rocket> rockets = new List<rocket>();
             if(Level > 0)
             {
+                int count = 10;
+                int angle = 360 / count;
 
+                for(int i = 0; i < 10; i++)
+                {
+                    Vector v = new Vector(Math.Cos(i*angle),Math.Sin(i*angle));
+                    rocket rocket = new rocket(Location, v, Level - 1);
+                }
             }
             return rockets;
         }
