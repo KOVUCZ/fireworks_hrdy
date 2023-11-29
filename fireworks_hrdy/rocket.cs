@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 
 namespace fireworks_hrdy
@@ -12,6 +13,15 @@ namespace fireworks_hrdy
         public Vector gravity { get; } = new Vector(0, 10); 
         public Point Location { get; set; }
         public Vector SpeedVector { get; set; }
+        public int Level { get; set; }
+
+        public rocket(Point location, Vector speedVector, int level)
+        {
+            Location = location;
+            SpeedVector = speedVector;
+            Level = level;
+              
+        }
 
 
 
@@ -21,9 +31,14 @@ namespace fireworks_hrdy
             SpeedVector = Vector.Add(SpeedVector, gravity);
         }
 
-        public void Explode()
+        public List<rocket> Explode()
         {
+            List<rocket> rockets = new List<rocket>();
+            if(Level > 0)
+            {
 
+            }
+            return rockets;
         }
     }
 }
