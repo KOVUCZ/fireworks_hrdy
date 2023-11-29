@@ -20,9 +20,16 @@ namespace fireworks_hrdy
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<rocket> rockets = new List<rocket>();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void CanvaSky_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

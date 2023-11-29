@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas Name="CanvaSky" Background="Black">
+        <Canvas Name="CanvaSky" Background="Black" MouseDown="CanvaSky_MouseDown">
             
         </Canvas>
         
